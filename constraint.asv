@@ -1,0 +1,9 @@
+function [c, ceq] = constraint(u)
+
+% [~, ~, ~, possible_locations_coords] = import_data(); 
+% 
+value = (-80.4037 - u(1) == 0 | -80.4038 - u(1) == 0);
+ceq = value - 1;
+% ceq = []; 
+c = [];
+end 

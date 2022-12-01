@@ -11,9 +11,9 @@ uopt = fmincon(@objective,u,[],[],[],[],lb,ub,@constraint,options); % Call fminc
 display(uopt);
 
 % Question: 
-% 1) this is the best location - do we just pick whichever community
-%    location is closest? Neither matlab nor python has a good method of
-%    solving for discrete constraints 
+% 1) Currently the equality constraint is kinda janky - we could do it as
+% is or we could find best possible location and find closest possible
+% location (below)
 
 % Possible method below - doesn't work because gathering places doesn't exist: 
 % [~,~,~,gathering_places] = import_data();

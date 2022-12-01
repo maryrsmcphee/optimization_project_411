@@ -1,10 +1,11 @@
-function [c, ceq] = constraint(~)
+function [c, ceq] = constraint(u)
 
-% [existing_garden_coords, grocery_store_coords, gathering_place_coords, possible_locations_coords] = import_data();
+% [~, ~, ~, possible_locations_coords] = import_data(); 
+% 
+ceq1 = (abs(-80.4037 - u(1)) < 0.001 | abs(-80.4041 - u(1)) < 0.001) - 1;
+ceq2 = (abs(43.4306 - u(2)) < 0.001 | abs(43.4315 - u(1)) < 0.001) - 1;
 
-% c1 = sum(possible_locations_coords(:,1) == u(1)) - 1; 
-% c2 = sum(possible_locations_coords(:,2) == u(2)) - 1;
-% c = [c1, c2];
-c = []; 
-ceq = [];
+ceq = [ceq1 ceq2];
+% ceq = []; 
+c = [];
 end 
