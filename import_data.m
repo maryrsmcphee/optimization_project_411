@@ -1,4 +1,4 @@
-function [existing_garden_coords, grocery_store_coords, gathering_place_coords, possible_locations_coords] = import_data()
+function [existing_garden_coords, grocery_store_coords, gathering_place_coords] = import_data()
 
 % IMPORT EXISTING GARDEN COORDINATE DATA 
 opts = spreadsheetImportOptions("NumVariables", 3);
@@ -21,6 +21,7 @@ garden_names = table2array(existing_gardens(:,1));
 ecg_y_lat = table2array(existing_gardens(:,2));
 ecg_x_long = table2array(existing_gardens(:,3));
 existing_garden_coords = [ecg_x_long ecg_y_lat];
+
 
 % IMPORT GROCERY COORDINATE DATA 
 opts2 = spreadsheetImportOptions("NumVariables", 3);
