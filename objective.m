@@ -5,7 +5,7 @@ function obj = objective(u)
     dist_groceries = dist_2_coords(u, grocery_store_coords);
     dist_gathering = dist_2_coords(u, gathering_place_coords);
     
-    obj = 1/dist_gardens + 1/dist_groceries + dist_gathering; 
+    obj = (-0.5*dist_gardens - 0.5*dist_groceries + dist_gathering); 
 
 end
 
