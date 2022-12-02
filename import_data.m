@@ -1,4 +1,4 @@
-function [existing_garden_coords, grocery_store_coords, gathering_place_coords] = import_data()
+function [existing_garden_coords, grocery_store_coords, gathering_place_coords, possible_location_coords] = import_data()
 
 % IMPORT EXISTING GARDEN COORDINATE DATA 
 opts = spreadsheetImportOptions("NumVariables", 3);
@@ -50,7 +50,7 @@ opts3 = spreadsheetImportOptions("NumVariables", 3);
 
 % Specify sheet and range
 opts3.Sheet = "Community Gathering Places";
-opts3.DataRange = "A2:C2";
+opts3.DataRange = "A2:C237";
 
 % Specify column names and types
 opts3.VariableNames = ["Name", "LatitudeY", "LongitudeX"];
@@ -67,26 +67,26 @@ places_y_lat = table2array(gathering_places(:,2));
 places_x_long = table2array(gathering_places(:,3));
 gathering_place_coords = [places_x_long places_y_lat];
 
-% % IMPORT PARKS AND SCHOOL DATA
-% opts4 = spreadsheetImportOptions("NumVariables", 3);
-% 
-% % Specify sheet and range
-% opts4.Sheet = "Parks + Schools (Possible Locations";
-% opts4.DataRange = "A2:C2";
-% 
-% % Specify column names and types
-% opts4.VariableNames = ["Name", "LatitudeY", "LongitudeX"];
-% opts4.VariableTypes = ["string", "double", "double"];
-% 
-% % Specify variable properties
-% opts4 = setvaropts(opts4, "Name", "WhitespaceRule", "preserve");
-% opts4 = setvaropts(opts4, "Name", "EmptyFieldRule", "auto");
-% 
-% % Import the data
-% possible_locations = readtable("/Users/marymcphee/Documents/MATLAB/SYDE 411/optimization_project_411/Coordinates.xlsx", opts4, "UseExcel", false);
-% locations_names = table2array(possible_locations(:,1));
-% locations_y_lat = table2array(possible_locations(:,2));
-% locations_x_long = table2array(possible_locations(:,3));
-% possible_locations_coords = [locations_y_lat locations_x_long];
+% IMPORT PARKS AND SCHOOL DATA
+opts4 = spreadsheetImportOptions("NumVariables", 3);
+
+% Specify sheet and range
+opts4.Sheet = "Possible Locations";
+opts4.DataRange = "A2:C129";
+
+% Specify column names and types
+opts4.VariableNames = ["Name", "LatitudeY", "LongitudeX"];
+opts4.VariableTypes = ["string", "double", "double"];
+
+% Specify variable properties
+opts4 = setvaropts(opts4, "Name", "WhitespaceRule", "preserve");
+opts4 = setvaropts(opts4, "Name", "EmptyFieldRule", "auto");
+
+% Import the data
+possible_locations = readtable("/Users/marymcphee/Documents/MATLAB/SYDE 411/optimization_project_411/Coordinates.xlsx", opts4, "UseExcel", false);
+locations_names = table2array(possible_locations(:,1));
+locations_y_lat = table2array(possible_locations(:,2));
+locations_x_long = table2array(possible_locations(:,3));
+possible_location_coords = [locations_y_lat locations_x_long];
 
 end
