@@ -9,7 +9,6 @@ function obj = objective(u)
 
 end
 
-
 function dist_coord = dist_2_coords(u, coord_set)
     d_x = 0; 
     d_y = 0; 
